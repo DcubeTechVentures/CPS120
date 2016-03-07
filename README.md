@@ -2,7 +2,8 @@
 # CPS120
 CPS120 Digital Barometer Altimeter  
 
-The CPS120 is a absolute pressure sensor which provide a compensated digital pressure output.
+The CPS120 is a absolute pressure sensor which provide a compensated digital pressure value.
+
 This Device is available from ControlEverything.com [SKU: CPS120_I2CS]
 
 https://www.controleverything.com/content/Barometer?sku=CPS120_I2CS
@@ -36,4 +37,4 @@ Download (or git pull) the code in pi. Run the program
 ```cpp
 $> python CPS120.py
 ```
-The code output is the digital pressure.
+The code output is digital pressure in kPa.
