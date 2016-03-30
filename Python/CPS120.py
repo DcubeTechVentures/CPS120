@@ -24,4 +24,4 @@ data = bus.read_i2c_block_data(0x28, 0x00, 2)
 pressure = (((data[0] & 0x3F) * 256 + data[1]) / 16384.0) * 90 + 30
 
 # Output data to screen
-print "Barometric Pressure is : %.2f kPa" %pressure
+print "Pressure is : %.2f kPa" %pressure
