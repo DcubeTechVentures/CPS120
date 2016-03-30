@@ -17,7 +17,7 @@ bus.write_byte(0x28, 0x80)
 time.sleep(0.1)
 
 # CPS120 address, 0x28(40)
-# Read data back from 0x00(0), 4 bytes, Pressure MSB first
+# Read data back from 0x00(0), 2 bytes, Pressure MSB first
 data = bus.read_i2c_block_data(0x28, 0x00, 2)
 
 # Convert the data to kPa
