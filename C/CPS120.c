@@ -30,7 +30,8 @@ void main()
 	write(file, config, 2);
 	sleep(1);
 
-	// Read 2 bytes of data, msb first
+	// Read 2 bytes of data
+	// msb pressure, lsb pressure
 	char reg = {0x00};
 	write(file, reg, 1);
 	char data[2] = {0};
