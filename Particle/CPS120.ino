@@ -28,6 +28,9 @@ void loop()
 {
     unsigned int data[4];
     
+    // Start I2C Transmission
+    Wire.beginTransmission(Addr);
+    
     // Request 4 byte of data
     Wire.requestFrom(Addr, 4);
 
@@ -40,6 +43,9 @@ void loop()
       data[2] = Wire.read();
       data[3] = Wire.read();
       delay(300);
+      
+      // Stop I2C Transmission
+      Wire.endTransmission();
     
       // Convert the values
       pressure = ((((data[0] & 0x3F) * 265 + data[1]) / 16384.0 ) * 90.0 ) + 30.0 ;
