@@ -10,7 +10,7 @@
 // CPS120 I2C address is 0x28(40)
 #define Addr 0x28
 
-float temperature = 0, pressure = 0;
+double temperature = 0.0, pressure = 0.0;
 void setup() 
 {
     // Set variable
