@@ -19,11 +19,13 @@ void setup()
 
 void loop()
 {
-    
     unsigned int data[4];
-    
+
     // Start I2C Transmission
     Wire.beginTransmission(Addr);
+    delay(10);
+    // Stop I2C Transmission
+    Wire.endTransmission();
     
     // Request 4 byte of data
     Wire.requestFrom(Addr, 4);
@@ -36,26 +38,23 @@ void loop()
       data[1] = Wire.read();
       data[2] = Wire.read();
       data[3] = Wire.read();
-      delay(300);
-      
-      // Stop I2C Transmission
-      Wire.endTransmission();
+    }
     
-      // Convert the data to 14 bits
-      float pressure = ((((data[0] & 0x3F) * 265 + data[1]) / 16384.0 ) * 90.0 ) + 30.0 ;
-      float cTemp = ((((data[2] * 256) + (data[3] & 0xFC)) / 4.0 ) * (165.0 / 16384.0)) - 40.0;
-      float fTemp = cTemp * 1.8 + 32;
-       
-      // Output data to serial monitor
-      Serial.print("Pressure is :   ");
-      Serial.print(pressure);
-      Serial.println(" kPa");
-      Serial.print("Temperature in Celsius : ");
-      Serial.print(cTemp);
-      Serial.println(" C");
-      Serial.print("Temperature in Fahrenheit : ");
-      Serial.print(fTemp);
-      Serial.println(" F");
-      delay(500); 
+    // Convert the data to 14 bits
+    float pressure = ((((data[0] & 0x3F) * 265 + data[1]) / 16384.0 ) * 90.0 ) + 30.0 ;
+    float cTemp = ((((data[2] * 256) + (data[3] & 0xFC)) / 4.0 ) * (165.0 / 16384.0)) - 40.0;
+    float fTemp = cTemp * 1.8 + 32;
+    
+    // Output data to serial monitor
+    Serial.print("Pressure is :   ");
+    Serial.print(pressure);
+    Serial.println(" kPa");
+    Serial.print("Temperature in Celsius : ");
+    Serial.print(cTemp);
+    Serial.println(" C");
+    Serial.print("Temperature in Fahrenheit : ");
+    Serial.print(fTemp);
+    Serial.println(" F");
+    delay(500); 
     }  
 }
